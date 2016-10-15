@@ -134,7 +134,7 @@ unnest_.data.frame <- function(data, unnest_cols, .drop = NA, .id = NULL,
   }
   group_cols <- setdiff(group_cols, names(nested))
 
-  rest <- data[rep(1:nrow(data), n[[1]]), group_cols, drop = FALSE]
+  rest <- data[rep(seq_len(nrow(data)), n[[1]]), group_cols, drop = FALSE]
 
   dplyr::bind_cols(compact(list(rest, unnested_atomic, unnested_dataframe)))
 }
